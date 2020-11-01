@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+japan = Binder.create(title: "Japan Binder")
+florida = Binder.create(title: "Florida Binder")
