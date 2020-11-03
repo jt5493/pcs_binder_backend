@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_043628) do
+ActiveRecord::Schema.define(version: 2020_11_03_070001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,5 +30,25 @@ ActiveRecord::Schema.define(version: 2020_11_01_043628) do
     t.index ["binder_id"], name: "index_documents_on_binder_id"
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.bigint "binder_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["binder_id"], name: "index_links_on_binder_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "binder_id", null: false
+    t.index ["binder_id"], name: "index_notes_on_binder_id"
+  end
+
   add_foreign_key "documents", "binders"
+  add_foreign_key "links", "binders"
+  add_foreign_key "notes", "binders"
 end
