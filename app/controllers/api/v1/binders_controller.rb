@@ -3,7 +3,7 @@ class Api::V1::BindersController < ApplicationController
 
     def index
         @binders = Binder.all
-        render json: @binders
+        render json: BinderSerializer.new(@binders)
     end
 
 
