@@ -8,7 +8,7 @@ class Api::V1::BindersController < ApplicationController
 
     def show
         @binder = Binder.find(params[:id])
-        render json: @binder
+        render json: BinderSerializer.new(@binder)
     end
 
 

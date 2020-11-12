@@ -4,12 +4,12 @@ class Api::V1::NotesController < ApplicationController
 
     def index
         @notes = @binder.notes
-        render json: @notes
+        render json: NoteSerializer.new(@notes)
     end
 
     def show
         @note = @binder.notes.find_by(id: params[:id])
-        render json: @note 
+        render json: NoteSerializer.new(@note) 
     end
 
 

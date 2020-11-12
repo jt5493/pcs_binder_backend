@@ -4,12 +4,12 @@ class Api::V1::DocumentsController < ApplicationController
 
     def index
         @documents = @binder.documents
-        render json: @documents
+        render json: DocumentSerializer.new(@documents)
     end
 
     def show
         @document = @binder.documents.find_by(id: params[:id])
-        render json: @document
+        render json: DocumentSerializer.new(@document)
     end
 
 

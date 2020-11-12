@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-       resources :binders, only: [:index, :create] do
+       resources :binders, only: [:index, :show, :create, :destroy] do
         resources :documents, :links, :notes
        end
     end

@@ -4,12 +4,12 @@ class Api::V1::LinksController < ApplicationController
     
     def index
         @links = @binder.links
-        render json: @links
+        render json: LinkSerializer.new(@links)
     end
 
     def show
         @link = @binder.links.find_by(id: params[:id])
-        render json: @link
+        render json: LinkSerializer.new(@link)
     end
 
 
