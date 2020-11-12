@@ -17,7 +17,7 @@ class Api::V1::DocumentsController < ApplicationController
     def create
         @document = @binder.documents.build(document_params)
         if @document.save
-            render json: @document, status: :accepted
+            render json: @binder, status: :accepted
         else
             render json: {errors: @document.errors.full_messages}, status: :unprocessible_entity
         end

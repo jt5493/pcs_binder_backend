@@ -17,7 +17,7 @@ class Api::V1::NotesController < ApplicationController
     def create
         @note = @binder.notes.build(note_params)
         if @note.save
-            render json: @note, status: :accepted
+            render json: @binder, status: :accepted
         else
             render json: {errors: @note.errors.full_messages}, status: :unprocessible_entity
         end
