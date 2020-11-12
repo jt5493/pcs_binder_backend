@@ -17,7 +17,7 @@ class Api::V1::DocumentsController < ApplicationController
     def create
         @document = @binder.documents.build(document_params)
         if @document.save
-            render json: @binder, status: :accepted
+            render json: BinderSerializer.new(@binder), status: :accepted
         else
             render json: {errors: @document.errors.full_messages}, status: :unprocessible_entity
         end
@@ -37,7 +37,7 @@ class Api::V1::DocumentsController < ApplicationController
     def document_params
         params.require(:document).permit(
             :title,
-            :document,
+            :doc_path,
             :binder_id
         )
     end
