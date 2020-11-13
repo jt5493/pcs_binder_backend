@@ -24,7 +24,11 @@ class Api::V1::DocumentsController < ApplicationController
     end
 
     def destroy
-
+       document = Document.find(params["id"])
+       
+       document.destroy
+       
+       render json: BinderSerializer.new(@binder)
     end
 
 

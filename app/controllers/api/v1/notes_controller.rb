@@ -24,7 +24,11 @@ class Api::V1::NotesController < ApplicationController
     end
 
     def destroy
-
+        note = Note.find(params["id"])
+       
+        note.destroy
+        
+        render json: BinderSerializer.new(@binder)
     end
 
 

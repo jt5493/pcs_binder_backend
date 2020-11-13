@@ -24,7 +24,11 @@ class Api::V1::LinksController < ApplicationController
     end
 
     def destroy
-
+        link = Link.find(params["id"])
+       
+        link.destroy
+        
+        render json: BinderSerializer.new(@binder)
     end
 
 
