@@ -17,7 +17,7 @@ class Api::V1::LinksController < ApplicationController
     def create
         @link = @binder.links.build(link_params)
         if @link.save
-            render json: @binder, status: :accepted
+            render json: BinderSerializer.new(@binder), status: :accepted
         else
             render json: {errors: @link.errors.full_messages}, status: :unprocessible_entity
         end
