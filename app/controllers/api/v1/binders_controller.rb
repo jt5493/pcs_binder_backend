@@ -15,9 +15,9 @@ class Api::V1::BindersController < ApplicationController
 
     def create
        
-        binder = Binder.new(binder_params)
-        if binder.save
-            render json: binder, status: :accepted
+        @binder = Binder.new(binder_params)
+        if @binder.save
+            render json: BinderSerializer.new(@binder), status: :accepted
         else
             render json: {errors: binder.errors.full_messages}, status: :unprocessible_entity
         end
